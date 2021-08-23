@@ -18,8 +18,6 @@ namespace GameSearch
     {
         private IServiceProvider _serviceProvider;
 
-
-
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             CreateServiceProvider();
@@ -32,6 +30,10 @@ namespace GameSearch
             _serviceProvider = new ServiceCollection()
                 .AddSingleton<ShellView>()
                 .AddSingleton<ShellViewModel>()
+                .AddTransient<MainView>()
+                .AddTransient<MainViewModel>()
+                .AddTransient<NewEntryView>()
+                .AddTransient<NewEntryViewModel>()
                 .BuildServiceProvider();
 
         }

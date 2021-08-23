@@ -1,0 +1,44 @@
+﻿<Page x:Class="GameSearch.Views.NewEntryView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GameSearch.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="NewEntryView">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!-- Row 1-->
+        <Label Grid.Column="1" Grid.Row="1" Content="Game Name:" HorizontalAlignment="Left" />
+        <TextBox Grid.Column="2" Grid.Row="1" Width="200"/>
+        <!-- Row 2-->
+        <Label Grid.Column="1" Grid.Row="2" Content="Developer:" HorizontalAlignment="Left"/>
+        <TextBox Grid.Column="2" Grid.Row="2" Width="200"/>
+        <!-- Row 3-->
+        <Label Grid.Column="1" Grid.Row="3" Content="Publisher:" HorizontalAlignment="Left"/>
+        <TextBox Grid.Column="2" Grid.Row="3" Width="200"/>
+        <!-- Row 4-->
+        <Label Grid.Column="1" Grid.Row="4" Content="Release Date:" HorizontalAlignment="Left"/>
+        <TextBox Grid.Column="2" Grid.Row="4" Width="200"/>
+        <!-- Last Row-->
+        <Button Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Margin="0 5 0 0" Padding="0 5 0 5" Content="Create Entry"/>
+
+    </Grid>
+</Page>
