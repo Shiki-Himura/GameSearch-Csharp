@@ -17,6 +17,9 @@ namespace GameSearch
     public partial class App : Application
     {
         private IServiceProvider _serviceProvider;
+
+
+
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             CreateServiceProvider();

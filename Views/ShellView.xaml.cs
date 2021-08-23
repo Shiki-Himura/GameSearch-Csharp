@@ -22,6 +22,8 @@ namespace GameSearch.Views
     {
         public ShellViewModel ShellViewModel { get; set; }
 
+
+        //constructor
         public ShellView(ShellViewModel shellViewModel)
         {
             ShellViewModel = shellViewModel;
