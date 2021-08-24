@@ -9,6 +9,8 @@
       Title="MainView">
 
     <Grid>
-        
+        <TextBlock Text="Hello">
+            
+        </TextBlock>
     </Grid>
 </Page>

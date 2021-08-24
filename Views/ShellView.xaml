@@ -14,9 +14,9 @@
 
         <Menu>
             <MenuItem Header="Database">
-                <MenuItem Header="New Entry"/>
+                <MenuItem Header="New Entry" Command="{Binding Navigator.NavigationCommand}" CommandParameter="NewEntryView"/>
             </MenuItem>
         </Menu>
-        <Frame Grid.Row="1" Content=""/>
+        <Frame Grid.Row="1" Content="{Binding Navigator.ActivePage}" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

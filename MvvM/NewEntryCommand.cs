@@ -7,25 +7,15 @@ using System.Windows.Input;
 
 namespace GameSearch.MvvM
 {
-    public class NavigationCommand : ICommand
+    public class NewEntryCommand : ICommand
     {
-        private List<Type> _types;
-
         public event EventHandler CanExecuteChanged
         {
             add => CommandManager.RequerySuggested += value;
             remove => CommandManager.RequerySuggested -= value;
         }
 
-        public Action<Type> Callback { get; set; }
-
-        public NavigationCommand()
-        {
-            _types = AppDomain.CurrentDomain.GetAssemblies()
-                .SelectMany(t => t.GetTypes())
-                .Where(t => t.IsClass & t.Namespace == "GameSearch.Views")
-                .ToList();
-        }
+        public Action Callback { get; set; }
 
         public bool CanExecute(object parameter) => true;
 
@@ -33,7 +23,7 @@ namespace GameSearch.MvvM
         {
             if (Callback != null)
             {
-                Callback.Invoke(_types.First(x => x.Name == parameter.ToString()));
+                Callback.Invoke();
             }
         }
     }

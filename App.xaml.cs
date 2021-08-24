@@ -1,4 +1,5 @@
-﻿using GameSearch.ViewModels;
+﻿using GameSearch.MvvM;
+using GameSearch.ViewModels;
 using GameSearch.Views;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -23,6 +24,7 @@ namespace GameSearch
             CreateServiceProvider();
 
             _serviceProvider.GetRequiredService<ShellView>().Show();
+            _serviceProvider.GetRequiredService<Navigator>().Navigate(typeof(MainView));
         }
 
         private void CreateServiceProvider()
@@ -30,6 +32,9 @@ namespace GameSearch
             _serviceProvider = new ServiceCollection()
                 .AddSingleton<ShellView>()
                 .AddSingleton<ShellViewModel>()
+                .AddSingleton<Navigator>()
+                .AddSingleton<NavigationCommand>()
+                .AddSingleton<NewEntryCommand>()
                 .AddTransient<MainView>()
                 .AddTransient<MainViewModel>()
                 .AddTransient<NewEntryView>()
