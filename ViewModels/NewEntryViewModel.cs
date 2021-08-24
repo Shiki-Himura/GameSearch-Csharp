@@ -8,5 +8,6 @@ namespace GameSearch.ViewModels
 {
     public class NewEntryViewModel
     {
+
     }
 }
