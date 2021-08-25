@@ -76,5 +76,11 @@ namespace GameSearch.ViewModels
         {
             Navigator.Navigate(typeof(MainView));
         }
+
+        public NewEntryViewModel(Navigator navigator, NewEntryCommand newEntryCommand)
+        {
+            Navigator = navigator;
+            NewEntryCommand = newEntryCommand;
+        }
     }
 }
