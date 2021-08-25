@@ -10,7 +10,6 @@ namespace GameSearch.ViewModels
 {
     public class NewEntryViewModel : BaseModel
     {
-        private NewEntryCommand _newEntryCommand;
         private string _gameName;
         private string _developer;
         private string _publisher;
@@ -59,28 +58,16 @@ namespace GameSearch.ViewModels
         }
 
 
-        public NewEntryCommand NewEntryCommand
-        {
-            get => _newEntryCommand;
-            set
-            {
-                _newEntryCommand = value;
-                if (_newEntryCommand.Callback == null)
-                {
-                    _newEntryCommand.Callback = CreateNewEntry;
-                }
-            }
-        }
+        public RelayCommand NewEntryCommand { get; set; }
 
         public void CreateNewEntry()
         {
             Navigator.Navigate(typeof(MainView));
         }
 
-        public NewEntryViewModel(Navigator navigator, NewEntryCommand newEntryCommand)
+        public NewEntryViewModel(Navigator navigator)
         {
             Navigator = navigator;
-            NewEntryCommand = newEntryCommand;
         }
     }
 }

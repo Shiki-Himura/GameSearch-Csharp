@@ -24,7 +24,7 @@ namespace GameSearch
             CreateServiceProvider();
 
             _serviceProvider.GetRequiredService<ShellView>().Show();
-            _serviceProvider.GetRequiredService<Navigator>().Navigate(typeof(MainView));
+            _serviceProvider.GetRequiredService<Navigator>().Navigate<MainView>();
         }
 
         private void CreateServiceProvider()
@@ -33,8 +33,6 @@ namespace GameSearch
                 .AddSingleton<ShellView>()
                 .AddSingleton<ShellViewModel>()
                 .AddSingleton<Navigator>()
-                .AddSingleton<NavigationCommand>()
-                .AddSingleton<NewEntryCommand>()
                 .AddTransient<MainView>()
                 .AddTransient<MainViewModel>()
                 .AddTransient<NewEntryView>()

@@ -12,10 +12,7 @@ namespace GameSearch.MvvM
         public event PropertyChangedEventHandler PropertyChanged;
         public void NotifyPropertyChanged(string PropertyName)
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(PropertyName));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
         }
     }
 }

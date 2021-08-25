@@ -12,8 +12,8 @@ namespace GameSearch.MvvM
     public class Navigator : BaseModel
     {
         private IServiceProvider _serviceProvider;
-        private NavigationCommand _navigationCommand;
         private Page _activePage;
+        private List<Type> _types;
 
         public Page ActivePage
         {
@@ -25,29 +25,26 @@ namespace GameSearch.MvvM
             }
         }
 
-        public NavigationCommand NavigationCommand
-        {
-            get => _navigationCommand;
-            set
-            {
-                _navigationCommand = value;
+        public RelayCommand NavigationCommand { get; set; }
 
-                if (_navigationCommand.Callback == null)
-                {
-                    _navigationCommand.Callback = Navigate;
-                }
-            }
-        }
-
-        public Navigator(IServiceProvider serviceProvider, NavigationCommand navigationCommand)
+        public Navigator(IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
-            NavigationCommand = navigationCommand;
+            NavigationCommand = new RelayCommand(Navigate, null);
+
+            _types = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(t => t.GetTypes())
+                .Where(t => t.IsClass & t.Namespace == "GameSearch.Views")
+                .ToList();
         }
 
-        public void Navigate(Type type)
+        public void Navigate<T>()
         {
-            ActivePage = (Page)_serviceProvider.GetRequiredService(type);
+            ActivePage = (Page)_serviceProvider.GetRequiredService(typeof(T));
+        }        
+        public void Navigate(object parameter)
+        {
+            ActivePage = (Page)_serviceProvider.GetRequiredService(_types.First(x => x.Name == parameter.ToString()));
         }
     }
 }

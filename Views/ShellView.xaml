@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
 
         <Menu>
-            <MenuItem Header="Database">
+            <MenuItem Header="Database" Height="20">
                 <MenuItem Header="New Entry" Command="{Binding Navigator.NavigationCommand}" CommandParameter="NewEntryView"/>
             </MenuItem>
         </Menu>

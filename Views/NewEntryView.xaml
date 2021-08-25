@@ -25,21 +25,25 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <!-- Row 0-->
+        <Button Grid.Column="1" Grid.Row="5" Margin="0 2 0 2" Padding="0 5 0 5" Content="Back" Width="70" Height="30" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" Command="{Binding Navigator.NavigationCommand}" CommandParameter="MainView"/> 
+        <!-- Change button binding to "go back to main page"-->
         <!-- Row 1-->
         <Label Grid.Column="1" Grid.Row="1" Content="Game Name:" HorizontalAlignment="Left" />
-        <TextBox Grid.Column="2" Grid.Row="1" Width="200" Text="{Binding GameName}"/>
+        <TextBox Grid.Column="2" Grid.Row="1" Width="200" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Text="{Binding GameName}"/>
         <!-- Row 2-->
         <Label Grid.Column="1" Grid.Row="2" Content="Developer:" HorizontalAlignment="Left"/>
-        <TextBox Grid.Column="2" Grid.Row="2" Width="200" Text="{Binding Developer}"/>
+        <TextBox Grid.Column="2" Grid.Row="2" Width="200" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Text="{Binding Developer}"/>
         <!-- Row 3-->
         <Label Grid.Column="1" Grid.Row="3" Content="Publisher:" HorizontalAlignment="Left"/>
-        <TextBox Grid.Column="2" Grid.Row="3" Width="200" Text="{Binding Publisher}"/>
+        <TextBox Grid.Column="2" Grid.Row="3" Width="200" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Text="{Binding Publisher}"/>
         <!-- Row 4-->
         <Label Grid.Column="1" Grid.Row="4" Content="Release Date:" HorizontalAlignment="Left"/>
-        <TextBox Grid.Column="2" Grid.Row="4" Width="200" Text="{Binding ReleaseDate}"/>
+        <TextBox Grid.Column="2" Grid.Row="4" Width="200" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Text="{Binding ReleaseDate}"/>
         <!-- Last Row-->
-        <Button Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Margin="0 5 0 0" Padding="0 5 0 5" Content="Create Entry" 
-                Command="{Binding NewEntryCommand}" CommandParameter=""/>
+        <Button Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="1" Margin="0 2 0 2" Padding="0 5 0 5" Content="Create Entry" 
+                VerticalAlignment="Center" Width="150" Height="30" Command="{Binding Navigator.NavigationCommand}" CommandParameter="MainView"/>
 
     </Grid>
 </Page>
