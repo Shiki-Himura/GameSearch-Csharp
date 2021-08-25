@@ -14,6 +14,7 @@ namespace GameSearch.ViewModels
         private string _developer;
         private string _publisher;
         private string _releaseDate;
+        public RelayCommand NewEntryCommand { get; set; }
 
         public Navigator Navigator { get; }
 
@@ -57,17 +58,15 @@ namespace GameSearch.ViewModels
             }
         }
 
-
-        public RelayCommand NewEntryCommand { get; set; }
-
-        public void CreateNewEntry()
+        public void CreateNewEntry(object parameter)
         {
-            Navigator.Navigate(typeof(MainView));
+            Navigator.Navigate<MainView>();
         }
 
         public NewEntryViewModel(Navigator navigator)
         {
             Navigator = navigator;
+            NewEntryCommand = new RelayCommand(CreateNewEntry, null);
         }
     }
 }
