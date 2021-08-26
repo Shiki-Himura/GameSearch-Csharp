@@ -26,24 +26,29 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <!-- Row 0-->
-        <Button Grid.Column="1" Grid.Row="5" Margin="0 2 0 2" Padding="0 5 0 5" Content="Back" Width="70" Height="30" HorizontalAlignment="Center" 
-                VerticalAlignment="Center" Command="{Binding Navigator.NavigationCommand}" CommandParameter="MainView"/> 
+         
         <!-- Change button binding to "go back to main page"-->
         <!-- Row 1-->
         <Label Grid.Column="1" Grid.Row="1" Content="Game Name:" HorizontalAlignment="Left" />
-        <TextBox Grid.Column="2" Grid.Row="1" Width="200" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Text="{Binding GameName}"/>
+        <TextBox Grid.Column="2" Grid.Row="1" Width="200" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                 Text="{Binding GameName, UpdateSourceTrigger=PropertyChanged}"/>
         <!-- Row 2-->
         <Label Grid.Column="1" Grid.Row="2" Content="Developer:" HorizontalAlignment="Left"/>
-        <TextBox Grid.Column="2" Grid.Row="2" Width="200" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Text="{Binding Developer}"/>
+        <TextBox Grid.Column="2" Grid.Row="2" Width="200" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" 
+                 Text="{Binding Developer, UpdateSourceTrigger=PropertyChanged}"/>
         <!-- Row 3-->
         <Label Grid.Column="1" Grid.Row="3" Content="Publisher:" HorizontalAlignment="Left"/>
-        <TextBox Grid.Column="2" Grid.Row="3" Width="200" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Text="{Binding Publisher}"/>
+        <TextBox Grid.Column="2" Grid.Row="3" Width="200" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" 
+                 Text="{Binding Publisher, UpdateSourceTrigger=PropertyChanged}"/>
         <!-- Row 4-->
         <Label Grid.Column="1" Grid.Row="4" Content="Release Date:" HorizontalAlignment="Left"/>
-        <TextBox Grid.Column="2" Grid.Row="4" Width="200" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Text="{Binding ReleaseDate}"/>
+        <TextBox Grid.Column="2" Grid.Row="4" Width="200" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" 
+                 Text="{Binding ReleaseDate, UpdateSourceTrigger=PropertyChanged}"/>
         <!-- Last Row-->
-        <Button Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="1" Margin="0 2 0 2" Padding="0 5 0 5" Content="Create Entry" 
-                VerticalAlignment="Center" Width="150" Height="30" Command="{Binding NewEntryCommand}"/>
+        <Button Grid.Column="1" Grid.Row="5" Margin="0 2 0 2" Padding="0 5 0 5" Content="Back" Width="70" Height="30" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" Command="{Binding CancelCreateNewEntryCommand}" />
+        <Button Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="1" Margin="0 2 0 2" Padding="0 5 0 5" Content="Create Entry" 
+                VerticalAlignment="Center" Width="150" Height="30" Command="{Binding NewEntryCommand}" />
 
     </Grid>
 </Page>

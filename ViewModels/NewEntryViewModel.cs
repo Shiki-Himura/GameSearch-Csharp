@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace GameSearch.ViewModels
 {
@@ -15,6 +16,7 @@ namespace GameSearch.ViewModels
         private string _publisher;
         private string _releaseDate;
         public RelayCommand NewEntryCommand { get; set; }
+        public RelayCommand CancelCreateNewEntryCommand { get; set; }
 
         public Navigator Navigator { get; }
 
@@ -62,11 +64,34 @@ namespace GameSearch.ViewModels
         {
             Navigator.Navigate<MainView>();
         }
+        
+        public void CancelCreateNewEntry(object parameter)
+        {
+            MessageBoxResult result = MessageBoxResult.Yes;
+
+            if (GameName.Length > 0 || Developer.Length > 0 || Publisher.Length > 0 || ReleaseDate.Length > 0)
+            {
+                result = MessageBox.Show("Unsaved Data! Continue?", "Warning!", MessageBoxButton.YesNo);
+            }
+
+            if (result == MessageBoxResult.Yes)
+                Navigator.Navigate<MainView>();
+        }
+
+        public bool CanCreateNewEntry(object parameter)
+        {
+            return GameName.Length > 0 && Developer.Length > 0 && Publisher.Length > 0 && ReleaseDate.Length > 0;
+        }
 
         public NewEntryViewModel(Navigator navigator)
         {
             Navigator = navigator;
-            NewEntryCommand = new RelayCommand(CreateNewEntry, null);
+            NewEntryCommand = new RelayCommand(CreateNewEntry, CanCreateNewEntry);
+            CancelCreateNewEntryCommand = new RelayCommand(CancelCreateNewEntry, null);
+            GameName = "";
+            Developer = "";
+            Publisher = "";
+            ReleaseDate = "";
         }
     }
 }
