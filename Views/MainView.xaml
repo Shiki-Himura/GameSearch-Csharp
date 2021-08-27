@@ -10,14 +10,8 @@
 
     <Grid>
         <TabControl>
-            <TabItem Header="Sample">
-                <DataGrid />
-            </TabItem>
-            <TabItem Header="Sample2">
-                <DataGrid />
-            </TabItem>
-            <TabItem Header="Sample3">
-                <DataGrid />
+            <TabItem Header="Games">
+                <DataGrid IsReadOnly="True" />
             </TabItem>
         </TabControl>
     </Grid>

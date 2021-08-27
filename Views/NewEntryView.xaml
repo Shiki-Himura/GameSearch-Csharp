@@ -49,6 +49,5 @@
                 VerticalAlignment="Center" Command="{Binding CancelCreateNewEntryCommand}" />
         <Button Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="1" Margin="0 2 0 2" Padding="0 5 0 5" Content="Create Entry" 
                 VerticalAlignment="Center" Width="150" Height="30" Command="{Binding NewEntryCommand}" />
-
     </Grid>
 </Page>

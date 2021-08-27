@@ -1,4 +1,5 @@
-﻿using GameSearch.MvvM;
+﻿using DBConnection.Data;
+using GameSearch.MvvM;
 using GameSearch.Views;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,14 @@ namespace GameSearch.ViewModels
 {
     public class NewEntryViewModel : BaseModel
     {
+        private GameData _gameData;
+        private int _dev_pubID;
+
         private string _gameName;
         private string _developer;
         private string _publisher;
-        private string _releaseDate;
+        private DateTime _releaseDate;
+
         public RelayCommand NewEntryCommand { get; set; }
         public RelayCommand CancelCreateNewEntryCommand { get; set; }
 
@@ -50,7 +55,7 @@ namespace GameSearch.ViewModels
             }
         }
 
-        public string ReleaseDate
+        public DateTime ReleaseDate
         {
             get => _releaseDate;
             set
@@ -62,6 +67,7 @@ namespace GameSearch.ViewModels
 
         public void CreateNewEntry(object parameter)
         {
+            _gameData.CreateGame(GameName, Developer, Publisher, ReleaseDate);
             Navigator.Navigate<MainView>();
         }
         
@@ -83,15 +89,16 @@ namespace GameSearch.ViewModels
             return GameName.Length > 0 && Developer.Length > 0 && Publisher.Length > 0 && ReleaseDate.Length > 0;
         }
 
-        public NewEntryViewModel(Navigator navigator)
+        public NewEntryViewModel(Navigator navigator, GameData gameData)
         {
+            _gameData = gameData;
+
             Navigator = navigator;
             NewEntryCommand = new RelayCommand(CreateNewEntry, CanCreateNewEntry);
             CancelCreateNewEntryCommand = new RelayCommand(CancelCreateNewEntry, null);
             GameName = "";
             Developer = "";
             Publisher = "";
-            ReleaseDate = "";
         }
     }
 }
