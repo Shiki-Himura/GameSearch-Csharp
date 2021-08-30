@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace GameSearch.ViewModels
 {
@@ -23,7 +24,7 @@ namespace GameSearch.ViewModels
         private ObservableCollection<Publisher> _pubList;
         private List<Developer> _developer;
         private List<Publisher> _publisher;
-        private string _releaseDate;
+        private DateTime _releaseDate = DateTime.Now;
         private int _devListSelectedIndex;
         private int _pubListSelectedIndex;
 
@@ -40,7 +41,6 @@ namespace GameSearch.ViewModels
                 DeveloperList = new ObservableCollection<Developer>(_developer);
             }
         }
-
         public List<Publisher> Publisher
         {
             get => _publisher;
@@ -50,7 +50,6 @@ namespace GameSearch.ViewModels
                 PublisherList = new ObservableCollection<Publisher>(_publisher);
             }
         }
-
         public string GameName
         {
             get => _gameName;
@@ -60,7 +59,6 @@ namespace GameSearch.ViewModels
                 NotifyPropertyChanged("GameName");
             }
         }
-
         public ObservableCollection<Developer> DeveloperList
         {
             get => _devList;
@@ -70,7 +68,6 @@ namespace GameSearch.ViewModels
                 NotifyPropertyChanged("Developer");
             }
         }
-
         public ObservableCollection<Publisher> PublisherList
         {
             get => _pubList;
@@ -80,8 +77,7 @@ namespace GameSearch.ViewModels
                 NotifyPropertyChanged("Publisher");
             }
         }
-
-        public string ReleaseDate
+        public DateTime ReleaseDate
         {
             get => _releaseDate;
             set
@@ -90,7 +86,6 @@ namespace GameSearch.ViewModels
                 NotifyPropertyChanged("ReleaseDate");
             }
         }
-
         public int DevListSelectedIndex
         {
             get => _devListSelectedIndex;
@@ -148,7 +143,6 @@ namespace GameSearch.ViewModels
             NewEntryCommand = new RelayCommand(CreateNewEntry, CanCreateNewEntry);
             CancelCreateNewEntryCommand = new RelayCommand(CancelCreateNewEntry, null);
             GameName = "";
-            ReleaseDate = "";
         }
     }
 }
