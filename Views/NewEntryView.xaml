@@ -34,12 +34,24 @@
                  Text="{Binding GameName, UpdateSourceTrigger=PropertyChanged}"/>
         <!-- Row 2-->
         <Label Grid.Column="1" Grid.Row="2" Content="Developer:" HorizontalAlignment="Left"/>
-        <TextBox Grid.Column="2" Grid.Row="2" Width="200" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" 
-                 Text="{Binding Developer, UpdateSourceTrigger=PropertyChanged}"/>
+        <ComboBox Grid.Column="2" Grid.Row="2" Width="200" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" 
+                 ItemsSource="{Binding DeveloperList, UpdateSourceTrigger=PropertyChanged}" SelectedIndex="{Binding DevListSelectedIndex}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}" />
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
         <!-- Row 3-->
         <Label Grid.Column="1" Grid.Row="3" Content="Publisher:" HorizontalAlignment="Left"/>
-        <TextBox Grid.Column="2" Grid.Row="3" Width="200" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" 
-                 Text="{Binding Publisher, UpdateSourceTrigger=PropertyChanged}"/>
+        <ComboBox Grid.Column="2" Grid.Row="3" Width="200" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" 
+                 ItemsSource="{Binding PublisherList, UpdateSourceTrigger=PropertyChanged}" SelectedIndex="{Binding PubListSelectedIndex}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}" />
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
         <!-- Row 4-->
         <Label Grid.Column="1" Grid.Row="4" Content="Release Date:" HorizontalAlignment="Left"/>
         <TextBox Grid.Column="2" Grid.Row="4" Width="200" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" 

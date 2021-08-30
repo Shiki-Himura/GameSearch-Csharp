@@ -1,4 +1,5 @@
-﻿using GameSearch.MvvM;
+﻿using DBConnection.Data;
+using GameSearch.MvvM;
 using GameSearch.ViewModels;
 using GameSearch.Views;
 using Microsoft.Extensions.DependencyInjection;
@@ -33,10 +34,17 @@ namespace GameSearch
                 .AddSingleton<ShellView>()
                 .AddSingleton<ShellViewModel>()
                 .AddSingleton<Navigator>()
+                .AddSingleton<GameData>()
+                .AddSingleton<DeveloperData>()
+                .AddSingleton<PublisherData>()
                 .AddTransient<MainView>()
                 .AddTransient<MainViewModel>()
                 .AddTransient<NewEntryView>()
                 .AddTransient<NewEntryViewModel>()
+                .AddTransient<NewDeveloperView>()
+                .AddTransient<NewDeveloperViewModel>()
+                .AddTransient<NewPublisherView>()
+                .AddTransient<NewPublisherViewModel>()
                 .BuildServiceProvider();
 
         }

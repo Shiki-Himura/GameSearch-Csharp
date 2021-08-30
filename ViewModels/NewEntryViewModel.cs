@@ -1,8 +1,10 @@
 ﻿using DBConnection.Data;
+using DBConnection.Models;
 using GameSearch.MvvM;
 using GameSearch.Views;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,17 +15,41 @@ namespace GameSearch.ViewModels
     public class NewEntryViewModel : BaseModel
     {
         private GameData _gameData;
-        private int _dev_pubID;
+        private DeveloperData _devData;
+        private PublisherData _pubData;
 
         private string _gameName;
-        private string _developer;
-        private string _publisher;
-        private DateTime _releaseDate;
+        private ObservableCollection<Developer> _devList;
+        private ObservableCollection<Publisher> _pubList;
+        private List<Developer> _developer;
+        private List<Publisher> _publisher;
+        private string _releaseDate;
+        private int _devListSelectedIndex;
+        private int _pubListSelectedIndex;
 
+        public Navigator Navigator { get; }
         public RelayCommand NewEntryCommand { get; set; }
         public RelayCommand CancelCreateNewEntryCommand { get; set; }
 
-        public Navigator Navigator { get; }
+        public List<Developer> Developer
+        {
+            get => _developer;
+            set
+            {
+                _developer = value;
+                DeveloperList = new ObservableCollection<Developer>(_developer);
+            }
+        }
+
+        public List<Publisher> Publisher
+        {
+            get => _publisher;
+            set
+            {
+                _publisher = value;
+                PublisherList = new ObservableCollection<Publisher>(_publisher);
+            }
+        }
 
         public string GameName
         {
@@ -35,27 +61,27 @@ namespace GameSearch.ViewModels
             }
         }
 
-        public string Developer
+        public ObservableCollection<Developer> DeveloperList
         {
-            get => _developer;
+            get => _devList;
             set
             {
-                _developer = value;
+                _devList = value;
                 NotifyPropertyChanged("Developer");
             }
         }
 
-        public string Publisher
+        public ObservableCollection<Publisher> PublisherList
         {
-            get => _publisher;
+            get => _pubList;
             set
             {
-                _publisher = value;
+                _pubList = value;
                 NotifyPropertyChanged("Publisher");
             }
         }
 
-        public DateTime ReleaseDate
+        public string ReleaseDate
         {
             get => _releaseDate;
             set
@@ -65,17 +91,36 @@ namespace GameSearch.ViewModels
             }
         }
 
+        public int DevListSelectedIndex
+        {
+            get => _devListSelectedIndex;
+            set
+            {
+                _devListSelectedIndex = value;
+                NotifyPropertyChanged("DevListSelectedIndex");
+            }
+        }
+        public int PubListSelectedIndex
+        {
+            get => _pubListSelectedIndex;
+            set
+            {
+                _pubListSelectedIndex = value;
+                NotifyPropertyChanged("PubListSelectedIndex");
+            }
+        }
+
         public void CreateNewEntry(object parameter)
         {
-            _gameData.CreateGame(GameName, Developer, Publisher, ReleaseDate);
+
             Navigator.Navigate<MainView>();
         }
-        
+
         public void CancelCreateNewEntry(object parameter)
         {
             MessageBoxResult result = MessageBoxResult.Yes;
 
-            if (GameName.Length > 0 || Developer.Length > 0 || Publisher.Length > 0 || ReleaseDate.Length > 0)
+            if (DevListSelectedIndex > -1 && PubListSelectedIndex > -1)
             {
                 result = MessageBox.Show("Unsaved Data! Continue?", "Warning!", MessageBoxButton.YesNo);
             }
@@ -86,19 +131,24 @@ namespace GameSearch.ViewModels
 
         public bool CanCreateNewEntry(object parameter)
         {
-            return GameName.Length > 0 && Developer.Length > 0 && Publisher.Length > 0 && ReleaseDate.Length > 0;
+            return DevListSelectedIndex > -1 && PubListSelectedIndex > -1;
         }
 
-        public NewEntryViewModel(Navigator navigator, GameData gameData)
+        public NewEntryViewModel(Navigator navigator, GameData gameData, DeveloperData developerData, PublisherData publisherData)
         {
             _gameData = gameData;
+            _devData = developerData;
+            _pubData = publisherData;
+            Publisher = _pubData.GetAllPublisher();
+            Developer = _devData.GetAllDeveloper();
+            DevListSelectedIndex = -1;
+            PubListSelectedIndex = -1;
 
             Navigator = navigator;
             NewEntryCommand = new RelayCommand(CreateNewEntry, CanCreateNewEntry);
             CancelCreateNewEntryCommand = new RelayCommand(CancelCreateNewEntry, null);
             GameName = "";
-            Developer = "";
-            Publisher = "";
+            ReleaseDate = "";
         }
     }
 }
