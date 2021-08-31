@@ -18,6 +18,7 @@ namespace GameSearch.ViewModels
         private GameData _gameData;
         private DeveloperData _devData;
         private PublisherData _pubData;
+        private Dev_PubData _devPubData;
 
         private string _gameName;
         private ObservableCollection<Developer> _devList;
@@ -107,6 +108,9 @@ namespace GameSearch.ViewModels
 
         public void CreateNewEntry(object parameter)
         {
+            _devPubData.CreateDevPub(Developer[DevListSelectedIndex].ID, Publisher[PubListSelectedIndex].ID);
+            int id = _devPubData.GetID(Developer[DevListSelectedIndex].ID, Publisher[PubListSelectedIndex].ID);
+            _gameData.CreateGame(GameName, id, ReleaseDate);
 
             Navigator.Navigate<MainView>();
         }
@@ -116,9 +120,7 @@ namespace GameSearch.ViewModels
             MessageBoxResult result = MessageBoxResult.Yes;
 
             if (DevListSelectedIndex > -1 && PubListSelectedIndex > -1)
-            {
                 result = MessageBox.Show("Unsaved Data! Continue?", "Warning!", MessageBoxButton.YesNo);
-            }
 
             if (result == MessageBoxResult.Yes)
                 Navigator.Navigate<MainView>();
@@ -129,11 +131,12 @@ namespace GameSearch.ViewModels
             return DevListSelectedIndex > -1 && PubListSelectedIndex > -1;
         }
 
-        public NewEntryViewModel(Navigator navigator, GameData gameData, DeveloperData developerData, PublisherData publisherData)
+        public NewEntryViewModel(Navigator navigator, GameData gameData, DeveloperData developerData, PublisherData publisherData, Dev_PubData dev_PubData)
         {
             _gameData = gameData;
             _devData = developerData;
             _pubData = publisherData;
+            _devPubData = dev_PubData;
             Publisher = _pubData.GetAllPublisher();
             Developer = _devData.GetAllDeveloper();
             DevListSelectedIndex = -1;

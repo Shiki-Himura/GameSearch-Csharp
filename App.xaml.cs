@@ -37,6 +37,7 @@ namespace GameSearch
                 .AddSingleton<GameData>()
                 .AddSingleton<DeveloperData>()
                 .AddSingleton<PublisherData>()
+                .AddSingleton<Dev_PubData>()
                 .AddTransient<MainView>()
                 .AddTransient<MainViewModel>()
                 .AddTransient<NewEntryView>()
