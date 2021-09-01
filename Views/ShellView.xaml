@@ -5,15 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GameSearch.Views"
         mc:Ignorable="d" Name="Shell" DataContext="{Binding ElementName=Shell, Path=ShellViewModel}"
-        Title="ShellView" Height="450" Width="800">
+        Title="Game-Search" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="30" />
+            <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Menu>
-            <MenuItem Header="Database" Height="20">
+        <Menu >
+            <MenuItem Header="Database" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <MenuItem Header="New Entry" Command="{Binding Navigator.NavigationCommand}" CommandParameter="NewEntryView"/>
                 <MenuItem Header="Add Developer" Command="{Binding Navigator.NavigationCommand}" CommandParameter="NewDeveloperView"/>
                 <MenuItem Header="Add Publisher" Command="{Binding Navigator.NavigationCommand}" CommandParameter="NewPublisherView"/>

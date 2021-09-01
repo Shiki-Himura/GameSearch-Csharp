@@ -22,6 +22,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <!-- Row 0-->
@@ -32,8 +33,18 @@
         <TextBox Grid.Column="2" Grid.Row="1" Width="200" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
                  Text="{Binding GameName, UpdateSourceTrigger=PropertyChanged}"/>
         <!-- Row 2-->
-        <Label Grid.Column="1" Grid.Row="2" Content="Developer:" HorizontalAlignment="Left"/>
+        <!--Label Grid.Column="1" Grid.Row="2" Content="Genre:" HorizontalAlignment="Left" />
         <ComboBox Grid.Column="2" Grid.Row="2" Width="200" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" 
+                 ItemsSource="{Binding GenreList, UpdateSourceTrigger=PropertyChanged}" SelectedIndex="{Binding GenreListSelectedIndex}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}" />
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox-->
+        <!-- Row 3-->
+        <Label Grid.Column="1" Grid.Row="3" Content="Developer:" HorizontalAlignment="Left"/>
+        <ComboBox Grid.Column="2" Grid.Row="3" Width="200" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" 
                  ItemsSource="{Binding DeveloperList, UpdateSourceTrigger=PropertyChanged}" SelectedIndex="{Binding DevListSelectedIndex}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
@@ -41,11 +52,11 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <Button Grid.Column="3" Grid.Row="2" MinWidth="40" Margin="5 2 5 2" Content="New" VerticalAlignment="Center"
+        <Button Grid.Column="3" Grid.Row="3" MinWidth="40" Margin="5 2 5 2" Content="New" VerticalAlignment="Center"
                 Command="{Binding Navigator.NavigationCommand}" CommandParameter="NewDeveloperView" />
-        <!-- Row 3-->
-        <Label Grid.Column="1" Grid.Row="3" Content="Publisher:" HorizontalAlignment="Left"/>
-        <ComboBox Grid.Column="2" Grid.Row="3" Width="200" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" 
+        <!-- Row 4-->
+        <Label Grid.Column="1" Grid.Row="4" Content="Publisher:" HorizontalAlignment="Left"/>
+        <ComboBox Grid.Column="2" Grid.Row="4" Width="200" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" 
                  ItemsSource="{Binding PublisherList, UpdateSourceTrigger=PropertyChanged}" SelectedIndex="{Binding PubListSelectedIndex}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
@@ -53,16 +64,16 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <Button Grid.Column="3" Grid.Row="3" Width="40" Margin="5 2 5 2" Content="New" VerticalAlignment="Center"
+        <Button Grid.Column="3" Grid.Row="4" Width="40" Margin="5 2 5 2" Content="New" VerticalAlignment="Center"
                 Command="{Binding Navigator.NavigationCommand}" CommandParameter="NewPublisherView" />
-        <!-- Row 4-->
-        <Label Grid.Column="1" Grid.Row="4" Content="Release Date:" HorizontalAlignment="Left"/>
-        <DatePicker Grid.Column="2" Grid.Row="4" Width="200" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+        <!-- Row 5-->
+        <Label Grid.Column="1" Grid.Row="5" Content="Release Date:" HorizontalAlignment="Left"/>
+        <DatePicker Grid.Column="2" Grid.Row="5" Width="200" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
                  SelectedDate="{Binding ReleaseDate, UpdateSourceTrigger=PropertyChanged}" FirstDayOfWeek="Monday" />
         <!-- Last Row-->
-        <Button Grid.Column="1" Grid.Row="5" Margin="0 2 0 2" Padding="0 5 0 5" Content="Back" Width="70" Height="30" HorizontalAlignment="Center" 
+        <Button Grid.Column="1" Grid.Row="6" Margin="0 2 0 2" Padding="0 5 0 5" Content="Back" Width="70" Height="30" HorizontalAlignment="Center" 
                 VerticalAlignment="Center" Command="{Binding CancelCreateNewEntryCommand}" />
-        <Button Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="1" Margin="0 2 0 2" Padding="0 5 0 5" Content="Create Entry" 
+        <Button Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="1" Margin="0 2 0 2" Padding="0 5 0 5" Content="Create Entry" 
                 VerticalAlignment="Center" Width="150" Height="30" Command="{Binding NewEntryCommand}" />
     </Grid>
 </Page>

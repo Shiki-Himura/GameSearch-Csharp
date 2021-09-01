@@ -30,7 +30,7 @@ namespace GameSearch.ViewModels
         public void CreateNewPublisher(object parameter)
         {
             _pubData.CreatePublisher(PublisherName);
-            Navigator.Navigate<MainView>();
+            Navigator.Navigate<NewEntryView>();
         }
 
         public bool CanCreateNewPublisher(object parameter)

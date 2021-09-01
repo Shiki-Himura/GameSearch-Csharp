@@ -10,8 +10,16 @@
 
     <Grid>
         <TabControl>
-            <TabItem Header="Games">
-                <DataGrid IsReadOnly="True" />
+            <TabItem Header="List of Games">
+                <DataGrid ItemsSource="{Binding Data}" AutoGenerateColumns="False" IsReadOnly="True" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Game Name" Binding="{Binding Name}" Width="*"/>
+                        <!--DataGridTextColumn Header="Genre" Binding="{Binding Genre}" Width="*"/-->
+                        <DataGridTextColumn Header="Developer" Binding="{Binding DevName}" Width="*"/>
+                        <DataGridTextColumn Header="Publisher" Binding="{Binding PubName}" Width="*"/>
+                        <DataGridTextColumn Header="Release Date" Binding="{Binding ReleaseDate, StringFormat=\{0:dd-MM-yyyy\}}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
             </TabItem>
         </TabControl>
     </Grid>

@@ -30,7 +30,7 @@ namespace GameSearch.ViewModels
         public void CreateNewDeveloper(object parameter)
         {
             _devData.CreateDeveloper(DeveloperName);
-            Navigator.Navigate<MainView>();
+            Navigator.Navigate<NewEntryView>();
         }
 
         public bool CanCreateNewDeveloper(object parameter)
