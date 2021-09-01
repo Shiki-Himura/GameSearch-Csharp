@@ -15,6 +15,7 @@
         <Menu >
             <MenuItem Header="Database" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <MenuItem Header="New Entry" Command="{Binding Navigator.NavigationCommand}" CommandParameter="NewEntryView"/>
+                <MenuItem Header="Add Genre" Command="{Binding Navigator.NavigationCommand}" CommandParameter="NewGenreView"/>
                 <MenuItem Header="Add Developer" Command="{Binding Navigator.NavigationCommand}" CommandParameter="NewDeveloperView"/>
                 <MenuItem Header="Add Publisher" Command="{Binding Navigator.NavigationCommand}" CommandParameter="NewPublisherView"/>
             </MenuItem>

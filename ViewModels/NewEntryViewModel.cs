@@ -18,16 +18,20 @@ namespace GameSearch.ViewModels
         private GameData _gameData;
         private DeveloperData _devData;
         private PublisherData _pubData;
+        private GenreData _genreData;
         private Dev_PubData _devPubData;
 
         private string _gameName;
         private ObservableCollection<Developer> _devList;
         private ObservableCollection<Publisher> _pubList;
+        private ObservableCollection<Genre> _genreList;
         private List<Developer> _developer;
         private List<Publisher> _publisher;
+        private List<Genre> _genre;
         private DateTime _releaseDate = DateTime.Now;
         private int _devListSelectedIndex;
         private int _pubListSelectedIndex;
+        private int _genreListSelectedIndex;
 
         public Navigator Navigator { get; }
         public RelayCommand NewEntryCommand { get; set; }
@@ -49,6 +53,15 @@ namespace GameSearch.ViewModels
             {
                 _publisher = value;
                 PublisherList = new ObservableCollection<Publisher>(_publisher);
+            }
+        }
+        public List<Genre> Genre
+        {
+            get => _genre;
+            set
+            {
+                _genre = value;
+                GenreList = new ObservableCollection<Genre>(_genre);
             }
         }
         public string GameName
@@ -78,6 +91,15 @@ namespace GameSearch.ViewModels
                 NotifyPropertyChanged("Publisher");
             }
         }
+        public ObservableCollection<Genre> GenreList
+        {
+            get => _genreList;
+            set
+            {
+                _genreList = value;
+                NotifyPropertyChanged("Genre");
+            }
+        }
         public DateTime ReleaseDate
         {
             get => _releaseDate;
@@ -105,12 +127,22 @@ namespace GameSearch.ViewModels
                 NotifyPropertyChanged("PubListSelectedIndex");
             }
         }
+        public int GenreListSelectedIndex
+        {
+            get => _genreListSelectedIndex;
+            set
+            {
+                _genreListSelectedIndex = value;
+                NotifyPropertyChanged("GenreListSelectedIndex");
+            }
+        }
 
         public void CreateNewEntry(object parameter)
         {
             _devPubData.CreateDevPub(Developer[DevListSelectedIndex].ID, Publisher[PubListSelectedIndex].ID);
-            int id = _devPubData.GetID(Developer[DevListSelectedIndex].ID, Publisher[PubListSelectedIndex].ID);
-            _gameData.CreateGame(GameName, id, ReleaseDate);
+            int dev_pubID = _devPubData.GetID(Developer[DevListSelectedIndex].ID, Publisher[PubListSelectedIndex].ID);
+
+            _gameData.CreateGame(GameName, GenreList[GenreListSelectedIndex].ID, dev_pubID, ReleaseDate);
 
             Navigator.Navigate<MainView>();
         }
@@ -131,16 +163,19 @@ namespace GameSearch.ViewModels
             return DevListSelectedIndex > -1 && PubListSelectedIndex > -1;
         }
 
-        public NewEntryViewModel(Navigator navigator, GameData gameData, DeveloperData developerData, PublisherData publisherData, Dev_PubData dev_PubData)
+        public NewEntryViewModel(Navigator navigator, GameData gameData, DeveloperData developerData, PublisherData publisherData, Dev_PubData dev_PubData, GenreData genreData)
         {
             _gameData = gameData;
             _devData = developerData;
             _pubData = publisherData;
             _devPubData = dev_PubData;
+            _genreData = genreData;
             Publisher = _pubData.GetAllPublisher();
             Developer = _devData.GetAllDeveloper();
+            Genre = _genreData.GetAllGenre();
             DevListSelectedIndex = -1;
             PubListSelectedIndex = -1;
+            GenreListSelectedIndex = -1;
 
             Navigator = navigator;
             NewEntryCommand = new RelayCommand(CreateNewEntry, CanCreateNewEntry);
