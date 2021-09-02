@@ -26,6 +26,6 @@ namespace GameSearch.Views
         {
             NewDeveloperViewModel = newDeveloperViewModel;
             InitializeComponent();
-        }
+        }        
     }
 }

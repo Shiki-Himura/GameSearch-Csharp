@@ -16,4 +16,8 @@
     <ProjectReference Include="..\DBConnection\DBConnection.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="IMG\" />
+  </ItemGroup>
+
 </Project>

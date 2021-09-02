@@ -24,8 +24,12 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Label Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Content="Publisher Name: " />
-        <TextBox Grid.Column="2" Grid.Row="1" MinWidth="200" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" 
-                 Text="{Binding PublisherName, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox Grid.Column="2" Grid.Row="1" MinWidth="200" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" AcceptsReturn="True"
+                 Text="{Binding PublisherName, UpdateSourceTrigger=PropertyChanged}">
+            <TextBox.InputBindings>
+                <KeyBinding Key="Return" Command="{Binding CreatePublisherCommand}"/>
+            </TextBox.InputBindings>
+        </TextBox>
         
         <Button Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="1" Margin="0 2 0 2" Padding="0 5 0 5" Content="Add Publisher" 
                 VerticalAlignment="Top" Width="150" Height="30" Command="{Binding CreatePublisherCommand}" />

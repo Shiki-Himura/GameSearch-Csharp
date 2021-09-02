@@ -1,4 +1,5 @@
-﻿using GameSearch.ViewModels;
+﻿using DBConnection.Data;
+using GameSearch.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Ribbon;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -18,7 +20,7 @@ namespace GameSearch.Views
     /// <summary>
     /// Interaktionslogik für ShellView.xaml
     /// </summary>
-    public partial class ShellView : Window
+    public partial class ShellView : RibbonWindow
     {
         public ShellViewModel ShellViewModel { get; set; }
 

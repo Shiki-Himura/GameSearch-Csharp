@@ -7,11 +7,10 @@
       mc:Ignorable="d" Name="Main" DataContext="{Binding ElementName=Main, Path=MainViewModel}"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MainView">
-
     <Grid>
         <TabControl>
             <TabItem Header="List of Games">
-                <DataGrid ItemsSource="{Binding Data}" AutoGenerateColumns="False" IsReadOnly="True" >
+                <DataGrid ItemsSource="{Binding Data}" AlternatingRowBackground="LightGray" AlternationCount="2" AutoGenerateColumns="False" IsReadOnly="True" >
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Game Name" Binding="{Binding Name}" Width="*"/>
                         <DataGridTextColumn Header="Genre" Binding="{Binding GenreName}" Width="*"/>
