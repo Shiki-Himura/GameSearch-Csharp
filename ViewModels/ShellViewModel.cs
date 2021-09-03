@@ -13,9 +13,16 @@ namespace GameSearch.ViewModels
     public class ShellViewModel : BaseModel
     {
         public Navigator Navigator { get; }
+        public RelayCommand ShutDownCommand { get; set; }
+
+        public void ShutdownApp(object parameter)
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
 
         public ShellViewModel(Navigator navigator)
         {
+            ShutDownCommand = new RelayCommand(ShutdownApp, null);
             Navigator = navigator;
         }
     }
