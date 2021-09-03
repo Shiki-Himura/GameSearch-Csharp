@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace GameSearch.ViewModels
 {
@@ -26,8 +27,6 @@ namespace GameSearch.ViewModels
                 Data = new ObservableCollection<GamesList>(_games);
             }
         }
-
-
         public ObservableCollection<GamesList> Data
         {
             get => _data;
@@ -40,7 +39,6 @@ namespace GameSearch.ViewModels
         public MainViewModel(GameData gameData)
         {
             _gameListData = gameData;
-
             Games = _gameListData.GetAllGames();
         }
     }

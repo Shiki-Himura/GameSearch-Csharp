@@ -1,7 +1,9 @@
 ﻿using DBConnection.Data;
+using DBConnection.Models;
 using GameSearch.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,10 +24,9 @@ namespace GameSearch.Views
     /// </summary>
     public partial class ShellView : RibbonWindow
     {
+
         public ShellViewModel ShellViewModel { get; set; }
 
-
-        //constructor
         public ShellView(ShellViewModel shellViewModel)
         {
             ShellViewModel = shellViewModel;

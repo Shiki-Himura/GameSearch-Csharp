@@ -31,7 +31,7 @@
                     <RibbonButton Label="Add Publisher" Margin="0 25 0 0" Height="35" Command="{Binding Navigator.NavigationCommand}" CommandParameter="NewPublisherView"/>
                 </RibbonGroup>
                 <RibbonGroup Header="Search">
-                    <RibbonTextBox Margin="0 25 0 0" MinWidth="85" Command="{Binding FilteredGrid}"/>
+                    <RibbonTextBox Margin="0 25 0 0" MinWidth="85"/>
                 </RibbonGroup>
             </RibbonTab>
         </Ribbon>
