@@ -13,9 +13,9 @@
                 <DataGrid ItemsSource="{Binding Data}" AlternatingRowBackground="LightGray" AlternationCount="2" AutoGenerateColumns="False" IsReadOnly="True" >
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Game Name" Binding="{Binding Name}" Width="*"/>
-                        <DataGridTextColumn Header="Genre" Binding="{Binding GenreName}" Width="*"/>
                         <DataGridTextColumn Header="Developer" Binding="{Binding DevName}" Width="*"/>
                         <DataGridTextColumn Header="Publisher" Binding="{Binding PubName}" Width="*"/>
+                        <DataGridTextColumn Header="Genre" Binding="{Binding GenreName}" Width="*"/>
                         <DataGridTextColumn Header="Release Date" Binding="{Binding ReleaseDate, StringFormat=\{0:dd-MM-yyyy\}}" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>

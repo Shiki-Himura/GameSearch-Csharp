@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:GameSearch.Views"
       mc:Ignorable="d" Name="Publisher" DataContext="{Binding ElementName=Publisher, Path=NewPublisherViewModel}" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="NewPublisherView">
+      Title="NewPublisherView" FocusManager.FocusedElement="{Binding ElementName=PublisherName}">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -24,13 +24,14 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Label Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Content="Publisher Name: " />
-        <TextBox Grid.Column="2" Grid.Row="1" MinWidth="200" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" AcceptsReturn="True"
+        <TextBox Name="PublisherName" Grid.Column="2" Grid.Row="1" MinWidth="200" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" AcceptsReturn="True"
                  Text="{Binding PublisherName, UpdateSourceTrigger=PropertyChanged}">
             <TextBox.InputBindings>
                 <KeyBinding Key="Return" Command="{Binding CreatePublisherCommand}"/>
             </TextBox.InputBindings>
         </TextBox>
-        
+        <Button Grid.Column="1" Grid.Row="4" Margin="0 2 0 2" Padding="0 5 0 5" Content="Back" Width="70" Height="30" HorizontalAlignment="Center" 
+                VerticalAlignment="Top" Command="{Binding Navigator.NavigationCommand}" CommandParameter="NewEntryView" />
         <Button Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="1" Margin="0 2 0 2" Padding="0 5 0 5" Content="Add Publisher" 
                 VerticalAlignment="Top" Width="150" Height="30" Command="{Binding CreatePublisherCommand}" />
     </Grid>

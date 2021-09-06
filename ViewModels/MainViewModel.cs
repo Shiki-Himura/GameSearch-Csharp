@@ -13,10 +13,15 @@ namespace GameSearch.ViewModels
 {
     public class MainViewModel : BaseModel
     {
-        private GameData _gameListData;
+        #region Private Fields
 
+        private GameData _gameListData;
         private List<GamesList> _games;
         private ObservableCollection<GamesList> _data;
+
+        #endregion
+
+        #region Public Variables
 
         public List<GamesList> Games
         {
@@ -36,10 +41,17 @@ namespace GameSearch.ViewModels
                 NotifyPropertyChanged("Data");
             }
         }
+
+        #endregion
+
+        #region Constructor
+
         public MainViewModel(GameData gameData)
         {
             _gameListData = gameData;
             Games = _gameListData.GetAllGames();
         }
+
+        #endregion
     }
 }

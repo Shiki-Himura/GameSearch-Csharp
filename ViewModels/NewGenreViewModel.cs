@@ -11,8 +11,14 @@ namespace GameSearch.ViewModels
 {
     public class NewGenreViewModel : BaseModel
     {
+        #region Private Fields
+
         private GenreData _genreData;
         private string _genreName;
+
+        #endregion
+
+        #region Public Variables
 
         public Navigator Navigator { get; }
         public RelayCommand CreateGenreCommand { get; set; }
@@ -27,6 +33,10 @@ namespace GameSearch.ViewModels
             }
         }
 
+        #endregion
+
+        #region Methods
+
         public void CreateNewGenre(object parameter)
         {
             _genreData.CreateGenre(GenreName);
@@ -37,6 +47,10 @@ namespace GameSearch.ViewModels
             return GenreName.Length > 0;
         }
 
+        #endregion
+
+        #region Constructor
+
         public NewGenreViewModel(Navigator navigator, GenreData genreData)
         {
             _genreData = genreData;
@@ -44,5 +58,6 @@ namespace GameSearch.ViewModels
             CreateGenreCommand = new RelayCommand(CreateNewGenre, CanCreateNewGenre);
             GenreName = "";
         }
+        #endregion
     }
 }

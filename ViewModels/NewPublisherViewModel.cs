@@ -11,8 +11,14 @@ namespace GameSearch.ViewModels
 {
     public class NewPublisherViewModel : BaseModel
     {
+        #region Private Fields
+
         private PublisherData _pubData;
         private string _publisherName;
+
+        #endregion
+
+        #region Public Variables
 
         public Navigator Navigator { get; }
         public RelayCommand CreatePublisherCommand { get; set; }
@@ -27,6 +33,11 @@ namespace GameSearch.ViewModels
             }
         }
 
+        #endregion
+
+        #region Methods
+
+
         public void CreateNewPublisher(object parameter)
         {
             _pubData.CreatePublisher(PublisherName);
@@ -38,6 +49,10 @@ namespace GameSearch.ViewModels
             return PublisherName.Length > 0;
         }
 
+        #endregion
+
+        #region Constructor
+
         public NewPublisherViewModel(Navigator navigator, PublisherData publisherData)
         {
             _pubData = publisherData;
@@ -45,5 +60,7 @@ namespace GameSearch.ViewModels
             CreatePublisherCommand = new RelayCommand(CreateNewPublisher, CanCreateNewPublisher);
             PublisherName = "";
         }
+
+        #endregion
     }
 }

@@ -11,12 +11,14 @@ namespace GameSearch.ViewModels
 {
     public class NewDeveloperViewModel : BaseModel
     {
+        #region Private Fields        
         private DeveloperData _devData;
         private string _developerName;
+        #endregion
 
+        #region Public Variables        
         public Navigator Navigator { get; }
         public RelayCommand CreateDeveloperCommand { get; set; }
-
         public string DeveloperName
         {
             get => _developerName;
@@ -26,7 +28,9 @@ namespace GameSearch.ViewModels
                 NotifyPropertyChanged("DeveloperName");
             }
         }
+        #endregion
 
+        #region Methods        
         public void CreateNewDeveloper(object parameter)
         {
             _devData.CreateDeveloper(DeveloperName);
@@ -37,7 +41,9 @@ namespace GameSearch.ViewModels
         {
             return DeveloperName.Length > 0;
         }
+        #endregion
 
+        #region Constructor        
         public NewDeveloperViewModel(Navigator navigator, DeveloperData developerData)
         {
             _devData = developerData;
@@ -45,6 +51,7 @@ namespace GameSearch.ViewModels
             CreateDeveloperCommand = new RelayCommand(CreateNewDeveloper, CanCreateNewDeveloper);
             DeveloperName = "";
         }
+        #endregion
 
     }
 }

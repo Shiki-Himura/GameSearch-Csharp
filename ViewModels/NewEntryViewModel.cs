@@ -15,6 +15,7 @@ namespace GameSearch.ViewModels
 {
     public class NewEntryViewModel : BaseModel
     {
+        #region Private Fields        
         private GameData _gameData;
         private DeveloperData _devData;
         private PublisherData _pubData;
@@ -32,7 +33,9 @@ namespace GameSearch.ViewModels
         private int _devListSelectedIndex;
         private int _pubListSelectedIndex;
         private int _genreListSelectedIndex;
+        #endregion
 
+        #region Public Variables        
         public Navigator Navigator { get; }
         public RelayCommand NewEntryCommand { get; set; }
         public RelayCommand CancelCreateNewEntryCommand { get; set; }
@@ -136,7 +139,9 @@ namespace GameSearch.ViewModels
                 NotifyPropertyChanged("GenreListSelectedIndex");
             }
         }
+        #endregion
 
+        #region Methods        
         public void CreateNewEntry(object parameter)
         {
             _devPubData.CreateDevPub(Developer[DevListSelectedIndex].ID, Publisher[PubListSelectedIndex].ID);
@@ -151,7 +156,7 @@ namespace GameSearch.ViewModels
         {
             MessageBoxResult result = MessageBoxResult.Yes;
 
-            if (DevListSelectedIndex > -1 && PubListSelectedIndex > -1)
+            if (DevListSelectedIndex > -1 || PubListSelectedIndex > -1 || _gameName.Length > 0)
                 result = MessageBox.Show("Unsaved Data! Continue?", "Warning!", MessageBoxButton.YesNo);
 
             if (result == MessageBoxResult.Yes)
@@ -160,9 +165,11 @@ namespace GameSearch.ViewModels
 
         public bool CanCreateNewEntry(object parameter)
         {
-            return DevListSelectedIndex > -1 && PubListSelectedIndex > -1;
+            return DevListSelectedIndex > -1 && PubListSelectedIndex > -1 && _gameName.Length > 0;
         }
+        #endregion
 
+        #region Constructor
         public NewEntryViewModel(Navigator navigator, GameData gameData, DeveloperData developerData, PublisherData publisherData, Dev_PubData dev_PubData, GenreData genreData)
         {
             _gameData = gameData;
@@ -182,5 +189,6 @@ namespace GameSearch.ViewModels
             CancelCreateNewEntryCommand = new RelayCommand(CancelCreateNewEntry, null);
             GameName = "";
         }
+        #endregion
     }
 }
