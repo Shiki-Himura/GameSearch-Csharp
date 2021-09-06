@@ -17,8 +17,8 @@
                     <RibbonApplicationMenuItem Header="Exit" Command="{Binding ShutDownCommand}" />
                 </RibbonApplicationMenu>
             </Ribbon.ApplicationMenu>
-            <RibbonTab Header="Gamelist">
-                <RibbonGroup Header="Home">
+            <RibbonTab Header="Gamelist" Height="auto" Width="auto">
+                <RibbonGroup Header="Home" Height="auto">
                     <RibbonButton Label="Home" 
                                   Margin="0 25 0 0" 
                                   Height="35"

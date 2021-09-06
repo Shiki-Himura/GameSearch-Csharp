@@ -16,7 +16,7 @@ namespace GameSearch.ViewModels
         private string _developerName;
         #endregion
 
-        #region Public Variables        
+        #region public Variables        
         public Navigator Navigator { get; }
         public RelayCommand CreateDeveloperCommand { get; set; }
         public string DeveloperName

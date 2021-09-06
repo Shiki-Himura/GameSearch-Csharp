@@ -21,7 +21,7 @@ namespace GameSearch.ViewModels
 
         #endregion
 
-        #region Public Variables
+        #region public Variables
 
         public List<GamesList> Games
         {
@@ -38,7 +38,7 @@ namespace GameSearch.ViewModels
             set
             {
                 _data = value;
-                NotifyPropertyChanged("Data");
+                base.NotifyPropertyChanged("Data");
             }
         }
 

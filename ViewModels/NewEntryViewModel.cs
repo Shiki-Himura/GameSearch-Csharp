@@ -35,7 +35,7 @@ namespace GameSearch.ViewModels
         private int _genreListSelectedIndex;
         #endregion
 
-        #region Public Variables        
+        #region public Variables        
         public Navigator Navigator { get; }
         public RelayCommand NewEntryCommand { get; set; }
         public RelayCommand CancelCreateNewEntryCommand { get; set; }

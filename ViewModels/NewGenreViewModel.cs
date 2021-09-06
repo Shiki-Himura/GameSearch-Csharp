@@ -18,7 +18,7 @@ namespace GameSearch.ViewModels
 
         #endregion
 
-        #region Public Variables
+        #region public Variables
 
         public Navigator Navigator { get; }
         public RelayCommand CreateGenreCommand { get; set; }
