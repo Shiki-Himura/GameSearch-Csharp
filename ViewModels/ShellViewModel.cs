@@ -14,17 +14,33 @@ namespace GameSearch.ViewModels
     {
         #region Private Fields(empty)
 
+        private RelayCommand searchBoxCommand;
+        private RelayCommand _searchbox;
+
         #endregion
 
         #region Public Variables
 
         public Navigator Navigator { get; }
+        public RelayCommand SearchBoxCommand 
+        { 
+            get => searchBoxCommand;
+            set
+            {
+                _searchbox = value;
+                NotifyPropertyChanged("SearchBoxCommand");
+            }
+        }
         public RelayCommand ShutDownCommand { get; set; }
 
         #endregion
 
         #region Methods
 
+        public void FilterGrid(object parameter)
+        {
+            throw new NotImplementedException();
+        }
         public void ShutdownApp(object parameter)
         {
             System.Windows.Application.Current.Shutdown();
@@ -34,10 +50,11 @@ namespace GameSearch.ViewModels
 
         #region Constructor
 
-        public ShellViewModel(Navigator navigator)
+        public ShellViewModel(Navigator navigator, RelayCommand searchBoxCommand)
         {
-            ShutDownCommand = new RelayCommand(ShutdownApp, null);
             Navigator = navigator;
+            ShutDownCommand = new RelayCommand(ShutdownApp, null);
+            SearchBoxCommand = searchBoxCommand;
         }
 
         #endregion
