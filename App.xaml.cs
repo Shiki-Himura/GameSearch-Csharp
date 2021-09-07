@@ -1,4 +1,5 @@
 ﻿using DBConnection.Data;
+using GameSearch.Logic.FileConverter;
 using GameSearch.MvvM;
 using GameSearch.ViewModels;
 using GameSearch.Views;
@@ -39,6 +40,9 @@ namespace GameSearch
                 .AddSingleton<DeveloperData>()
                 .AddSingleton<PublisherData>()
                 .AddSingleton<Dev_PubData>()
+                .AddSingleton<IConverter, JsonConverter>()
+                .AddSingleton<IConverter, CsvConverter>()
+                .AddSingleton<IConverter, XmlConverter>()
                 .AddTransient<MainView>()
                 .AddTransient<MainViewModel>()
                 .AddTransient<NewEntryView>()
@@ -49,6 +53,8 @@ namespace GameSearch
                 .AddTransient<NewDeveloperViewModel>()
                 .AddTransient<NewPublisherView>()
                 .AddTransient<NewPublisherViewModel>()
+                .AddTransient<NewDataFileView>()
+                .AddTransient<NewDataFileViewModel>()
                 .BuildServiceProvider();
 
         }

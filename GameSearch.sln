@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameSearch", "GameSearch.cs
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "GameSearch.DB", "..\GameSearch.DB\GameSearch.DB.sqlproj", "{186B4AC7-9E9E-43D0-92AA-4B76DDE84CE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBConnection", "..\DBConnection\DBConnection.csproj", "{C216BBEC-BD7E-4BDD-859A-55C0D1E902E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DBConnection", "..\DBConnection\DBConnection.csproj", "{C216BBEC-BD7E-4BDD-859A-55C0D1E902E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameSearch.Logic", "..\GameSearch.Logic\GameSearch.Logic.csproj", "{EDC02197-25CA-4497-9176-AC21F95DAA27}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{C216BBEC-BD7E-4BDD-859A-55C0D1E902E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C216BBEC-BD7E-4BDD-859A-55C0D1E902E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C216BBEC-BD7E-4BDD-859A-55C0D1E902E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDC02197-25CA-4497-9176-AC21F95DAA27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDC02197-25CA-4497-9176-AC21F95DAA27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDC02197-25CA-4497-9176-AC21F95DAA27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDC02197-25CA-4497-9176-AC21F95DAA27}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

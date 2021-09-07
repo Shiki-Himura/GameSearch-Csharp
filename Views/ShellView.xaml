@@ -60,6 +60,15 @@
                                    Command="{Binding SearchBarCommand}" />
                 </RibbonGroup>
             </RibbonTab>
+            <RibbonTab Header="File">
+                <RibbonGroup Header="File">
+                    <RibbonButton Label="Create"
+                                  Margin="0 25 0 0" 
+                                  Height="35" 
+                                  Width="auto"
+                                  Command="{Binding Navigator.NavigationCommand}" CommandParameter="NewDataFileView" />
+                </RibbonGroup>
+            </RibbonTab>
         </Ribbon>
         <Frame Grid.Row="1" Content="{Binding Navigator.ActivePage}" NavigationUIVisibility="Hidden" />
     </Grid>

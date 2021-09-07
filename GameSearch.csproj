@@ -13,11 +13,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DBConnection\DBConnection.csproj" />
+    <Folder Include="IMG\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="IMG\" />
+    <ProjectReference Include="..\GameSearch.Logic\GameSearch.Logic.csproj" />
   </ItemGroup>
 
 </Project>
