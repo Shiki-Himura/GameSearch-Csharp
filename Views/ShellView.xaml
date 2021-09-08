@@ -53,11 +53,12 @@
                                   Width="auto"
                                   Command="{Binding Navigator.NavigationCommand}" CommandParameter="NewPublisherView" />
                 </RibbonGroup>
-                <RibbonGroup Header="SearchBar">
-                    <RibbonTextBox Margin="0 25 0 0" 
+                <RibbonGroup Header="Search">
+                    <RibbonTextBox Text="{Binding SearchBar.SearchString, UpdateSourceTrigger=PropertyChanged}"
+                                   Margin="0 25 0 0" 
                                    Width="auto" 
-                                   TextBoxWidth="150"
-                                   Command="{Binding SearchBarCommand}" />
+                                   TextBoxWidth="150">                        
+                    </RibbonTextBox>
                 </RibbonGroup>
             </RibbonTab>
             <RibbonTab Header="File">

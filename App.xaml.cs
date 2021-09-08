@@ -43,6 +43,7 @@ namespace GameSearch
                 .AddSingleton<IConverter, JsonConverter>()
                 .AddSingleton<IConverter, CsvConverter>()
                 .AddSingleton<IConverter, XmlConverter>()
+                .AddSingleton<SearchBar>()
                 .AddTransient<MainView>()
                 .AddTransient<MainViewModel>()
                 .AddTransient<NewEntryView>()

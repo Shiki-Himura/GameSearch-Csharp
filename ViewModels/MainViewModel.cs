@@ -1,13 +1,13 @@
 ﻿using DBConnection.Data;
 using DBConnection.Models;
 using GameSearch.MvvM;
+using GameSearch.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace GameSearch.ViewModels
 {
@@ -16,6 +16,7 @@ namespace GameSearch.ViewModels
         #region Private Fields
 
         private GameData _gameListData;
+        private SearchBar _searchBar;
         private List<GamesList> _games;
         private ObservableCollection<GamesList> _data;
 
@@ -38,20 +39,33 @@ namespace GameSearch.ViewModels
             set
             {
                 _data = value;
-                base.NotifyPropertyChanged("Data");
+                NotifyPropertyChanged("Data");
             }
         }
 
+        public SearchBar SearchBar => _searchBar;
+
         #endregion
+
 
         #region Constructor
 
-        public MainViewModel(GameData gameData)
+        public MainViewModel(GameData gameData, SearchBar searchBar)
         {
             _gameListData = gameData;
+            _searchBar = searchBar;
             Games = _gameListData.GetAllGames();
         }
 
         #endregion
     }
 }
+
+/*          CollectionViewSource _itemSourceList = new() { Source = MainViewModel.Data };
+            ICollectionView ItemList = _itemSourceList.View;
+
+            var filter = new Predicate<object>(item => ((GamesList)item).Name.Contains(SearchBar.Text));
+            ItemList.Filter = filter;
+
+            MainView.gameGrid.ItemsSource = ItemList;
+ */

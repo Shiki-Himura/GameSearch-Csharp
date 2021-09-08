@@ -10,7 +10,7 @@
     <Grid>
         <TabControl>
             <TabItem Header="List of Games">
-                <DataGrid ItemsSource="{Binding Data}" AlternatingRowBackground="LightGray" AlternationCount="2" AutoGenerateColumns="False" IsReadOnly="True" >
+                <DataGrid Name="GameListGrid" ItemsSource="{Binding Data, UpdateSourceTrigger=PropertyChanged}" AlternatingRowBackground="LightGray" AlternationCount="2" AutoGenerateColumns="False" IsReadOnly="True" >
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Game Name" Binding="{Binding Name}" Width="*"/>
                         <DataGridTextColumn Header="Developer" Binding="{Binding DevName}" Width="*"/>

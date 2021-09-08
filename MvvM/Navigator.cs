@@ -27,6 +27,15 @@ namespace GameSearch.MvvM
 
         public RelayCommand NavigationCommand { get; set; }
 
+
+        public void Navigate<T>()
+        {
+            ActivePage = (Page)_serviceProvider.GetRequiredService(typeof(T));
+        }        
+        public void Navigate(object parameter)
+        {
+            ActivePage = (Page)_serviceProvider.GetRequiredService(_types.First(x => x.Name == parameter.ToString()));
+        }
         public Navigator(IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
@@ -36,15 +45,6 @@ namespace GameSearch.MvvM
                 .SelectMany(t => t.GetTypes())
                 .Where(t => t.IsClass & t.Namespace == "GameSearch.Views")
                 .ToList();
-        }
-
-        public void Navigate<T>()
-        {
-            ActivePage = (Page)_serviceProvider.GetRequiredService(typeof(T));
-        }        
-        public void Navigate(object parameter)
-        {
-            ActivePage = (Page)_serviceProvider.GetRequiredService(_types.First(x => x.Name == parameter.ToString()));
         }
     }
 }

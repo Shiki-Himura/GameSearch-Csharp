@@ -1,46 +1,31 @@
-﻿using DBConnection.Data;
-using DBConnection.Models;
-using GameSearch.MvvM;
+﻿using GameSearch.MvvM;
+using GameSearch.Views;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
+using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace GameSearch.ViewModels
 {
     public class ShellViewModel : BaseModel
     {
-        #region Private Fields(empty)
+        #region Private Fields
 
-        private RelayCommand searchBoxCommand;
-        private RelayCommand _searchbox;
+        private SearchBar _searchBar;
 
         #endregion
 
         #region Public Variables
 
         public Navigator Navigator { get; }
-        public RelayCommand SearchBoxCommand 
-        { 
-            get => searchBoxCommand;
-            set
-            {
-                _searchbox = value;
-                NotifyPropertyChanged("SearchBoxCommand");
-            }
-        }
         public RelayCommand ShutDownCommand { get; set; }
+
+        public SearchBar SearchBar => _searchBar;
 
         #endregion
 
         #region Methods
 
-        public void FilterGrid(object parameter)
-        {
-            throw new NotImplementedException();
-        }
         public void ShutdownApp(object parameter)
         {
             System.Windows.Application.Current.Shutdown();
@@ -50,11 +35,11 @@ namespace GameSearch.ViewModels
 
         #region Constructor
 
-        public ShellViewModel(Navigator navigator, RelayCommand searchBoxCommand)
+        public ShellViewModel(Navigator navigator, SearchBar searchBar)
         {
             Navigator = navigator;
+            _searchBar = searchBar;
             ShutDownCommand = new RelayCommand(ShutdownApp, null);
-            SearchBoxCommand = searchBoxCommand;
         }
 
         #endregion

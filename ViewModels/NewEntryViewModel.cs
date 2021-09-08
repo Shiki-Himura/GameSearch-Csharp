@@ -15,13 +15,13 @@ namespace GameSearch.ViewModels
 {
     public class NewEntryViewModel : BaseModel
     {
-        #region Private Fields        
+        #region Private Fields
+
         private GameData _gameData;
         private DeveloperData _devData;
         private PublisherData _pubData;
         private GenreData _genreData;
         private Dev_PubData _devPubData;
-
         private string _gameName;
         private ObservableCollection<Developer> _devList;
         private ObservableCollection<Publisher> _pubList;

@@ -24,7 +24,6 @@ namespace GameSearch.Views
     /// </summary>
     public partial class ShellView : RibbonWindow
     {
-
         public ShellViewModel ShellViewModel { get; set; }
 
         public ShellView(ShellViewModel shellViewModel)
