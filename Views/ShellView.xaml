@@ -57,7 +57,7 @@
                     <RibbonTextBox Text="{Binding SearchBar.SearchString, UpdateSourceTrigger=PropertyChanged}"
                                    Margin="0 25 0 0" 
                                    Width="auto" 
-                                   TextBoxWidth="150">                        
+                                   TextBoxWidth="150">
                     </RibbonTextBox>
                 </RibbonGroup>
             </RibbonTab>

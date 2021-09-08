@@ -60,7 +60,7 @@ namespace GameSearch.ViewModels
         #endregion
     }
 }
-
+// implement filter with searchbar.searchstring
 /*          CollectionViewSource _itemSourceList = new() { Source = MainViewModel.Data };
             ICollectionView ItemList = _itemSourceList.View;
 
