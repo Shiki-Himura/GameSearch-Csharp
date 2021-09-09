@@ -9,7 +9,8 @@ namespace GameSearch.ViewModels
 {
     public class SearchBar : BaseModel
     {
-        private string _searchString;
+        private string _searchString = "";
+        public Action _refreshDataGrid { get; set; }
 
         public string SearchString
         {
@@ -18,6 +19,9 @@ namespace GameSearch.ViewModels
             {
                 _searchString = value;
                 NotifyPropertyChanged("SearchString");
+
+                if(SearchString != null)
+                    _refreshDataGrid?.Invoke();
             }
         }
     }
